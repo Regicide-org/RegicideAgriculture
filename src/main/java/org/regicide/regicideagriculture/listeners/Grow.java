@@ -9,9 +9,6 @@ import org.bukkit.block.data.Ageable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.material.Crops;
-import org.bukkit.metadata.FixedMetadataValue;
-import org.regicide.regicideagriculture.RegicideAgriculture;
 
 import java.util.Arrays;
 
@@ -41,25 +38,32 @@ public class Grow implements Listener
 
 
 
-    CropState previousState = null;
+    int previousState = -1;
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         Block block = event.getBlockPlaced();
         if (Arrays.asList(aboveAverage).contains(block.getBiome())) {
-            if ((block.getType() == Material.WHEAT) || (block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)) {
-                setCustomTickSpeed(block, 50, 1);
+            if ((block.getType() == Material.WHEAT) || (block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)
+                    || (block.getType() == Material.MELON_STEM) || (block.getType() == Material.PUMPKIN_STEM)) {
+                setCustomTickSpeed(block,  1);
             }
         }
         else if (Arrays.asList(coolBiomes).contains(block.getBiome())) {
-            if ((block.getType() == Material.WHEAT) || (block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)) {
-                setCustomTickSpeed(block, 75, 2);
+            if ((block.getType() == Material.WHEAT) || (block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)
+                    || (block.getType() == Material.MELON_STEM) || (block.getType() == Material.PUMPKIN_STEM)) {
+                setCustomTickSpeed(block,  2);
             }
         }
         else if (Arrays.asList(veryCoolBiomes).contains(block.getBiome())) {
-            if ((block.getType() == Material.WHEAT) || (block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)) {
-                setCustomTickSpeed(block, 100, 3);
+            if ((block.getType() == Material.WHEAT) || (block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)
+                    || (block.getType() == Material.MELON_STEM) || (block.getType() == Material.PUMPKIN_STEM)) {
+                setCustomTickSpeed(block, 3);
             }
+            else if (block.getType() == Material.BEETROOTS) {
+                setCustomTickSpeed(block, 1);
+            }
+
         }
 
         else if (Arrays.asList(belowTheAverage).contains(block.getBiome()))
@@ -67,12 +71,12 @@ public class Grow implements Listener
             if (block.getType() == Material.WHEAT)
             {
                 BlockState state = block.getState();
-                if (state.getData() instanceof Crops) {
-                    Crops crops = (Crops) state.getData();
-                    CropState currentState = crops.getState();
+                if (state.getBlockData() instanceof Ageable) {
+                    Ageable ageable = (Ageable) state.getBlockData();
+                    int currentState = ageable.getAge();
                     if (currentState != previousState) {
-                        if (crops.getState() == CropState.VERY_SMALL) {
-                            crops.setState(CropState.GERMINATED);
+                        if (ageable.getAge() == 2) {
+                            ageable.setAge(1);
                         }
                         state.update();
                         previousState = currentState;
@@ -80,14 +84,14 @@ public class Grow implements Listener
                 }
             }
              else if ((block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)
-                || (block.getType() == Material.BEETROOTS) || (block.getType() == Material.PUMPKIN_SEEDS) || (block.getType() == Material.MELON_SEEDS)){
+                || (block.getType() == Material.BEETROOTS) || (block.getType() == Material.PUMPKIN_STEM) || (block.getType() == Material.MELON_STEM)){
                 BlockState state = block.getState();
-                if (state.getData() instanceof Crops) {
-                    Crops crops = (Crops) state.getData();
-                    CropState currentState = crops.getState();
+                if (state.getBlockData() instanceof Ageable) {
+                    Ageable ageable = (Ageable) state.getBlockData();
+                    int currentState = ageable.getAge();
                     if (currentState != previousState) {
-                        if (crops.getState() == CropState.SMALL) {
-                            crops.setState(CropState.GERMINATED);
+                        if (ageable.getAge() == 3) {
+                            ageable.setAge(1);
                         }
                         state.update();
                         previousState = currentState;
@@ -98,36 +102,19 @@ public class Grow implements Listener
 
         else if (Arrays.asList(badBiomes).contains(block.getBiome()))
         {
-            if (block.getType() == Material.WHEAT)
+            if ((block.getType() == Material.WHEAT) || (block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)
+                    || (block.getType() == Material.BEETROOTS) || (block.getType() == Material.PUMPKIN_STEM) || (block.getType() == Material.MELON_STEM))
             {
                 BlockState state = block.getState();
-                if (state.getData() instanceof Crops) {
-                    Crops crops = (Crops) state.getData();
-                    CropState currentState = crops.getState();
+                if (state.getBlockData() instanceof Ageable) {
+                    Ageable ageable = (Ageable) state.getBlockData();
+                    int currentState = ageable.getAge();
                     if (currentState != previousState) {
-                        if (crops.getState() == CropState.VERY_SMALL) {
-                            crops.setState(CropState.GERMINATED);
+                        if (ageable.getAge() == 2) {
+                            ageable.setAge(1);
                         }
-                        if (crops.getState() == CropState.MEDIUM) {
-                            crops.setState(CropState.SMALL);
-                        }
-                        state.update();
-                        previousState = currentState;
-                    }
-                }
-            }
-            else if ((block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)
-                    || (block.getType() == Material.BEETROOTS) || (block.getType() == Material.PUMPKIN_SEEDS) || (block.getType() == Material.MELON_SEEDS)) {
-                BlockState state = block.getState();
-                if (state.getData() instanceof Crops) {
-                    Crops crops = (Crops) state.getData();
-                    CropState currentState = crops.getState();
-                    if (currentState != previousState) {
-                        if (crops.getState() == CropState.SMALL) {
-                            crops.setState(CropState.GERMINATED);
-                        }
-                        if (crops.getState() == CropState.TALL) {
-                            crops.setState(CropState.MEDIUM);
+                        if (ageable.getAge() == 4) {
+                            ageable.setAge(3);
                         }
                         state.update();
                         previousState = currentState;
@@ -138,42 +125,22 @@ public class Grow implements Listener
 
         else if (Arrays.asList(veryBadBiomes).contains(block.getBiome()))
         {
-            if (block.getType() == Material.WHEAT)
+            if ((block.getType() == Material.WHEAT) || (block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)
+                    || (block.getType() == Material.BEETROOTS) || (block.getType() == Material.PUMPKIN_STEM) || (block.getType() == Material.MELON_STEM))
             {
                 BlockState state = block.getState();
-                if (state.getData() instanceof Crops) {
-                    Crops crops = (Crops) state.getData();
-                    CropState currentState = crops.getState();
+                if (state.getBlockData() instanceof Ageable) {
+                    Ageable ageable = (Ageable) state.getBlockData();
+                    int currentState = ageable.getAge();
                     if (currentState != previousState) {
-                        if (crops.getState() == CropState.VERY_SMALL) {
-                            crops.setState(CropState.GERMINATED);
+                        if (ageable.getAge() == 1) {
+                            ageable.setAge(0);
                         }
-                        if (crops.getState() == CropState.MEDIUM) {
-                            crops.setState(CropState.SMALL);
+                        if (ageable.getAge() == 3) {
+                            ageable.setAge(2);
                         }
-                        if (crops.getState() == CropState.VERY_TALL) {
-                            crops.setState(CropState.TALL);
-                        }
-                        state.update();
-                        previousState = currentState;
-                    }
-                }
-            }
-            else if ((block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)
-                    || (block.getType() == Material.BEETROOTS) || (block.getType() == Material.PUMPKIN_SEEDS) || (block.getType() == Material.MELON_SEEDS)) {
-                BlockState state = block.getState();
-                if (state.getData() instanceof Crops) {
-                    Crops crops = (Crops) state.getData();
-                    CropState currentState = crops.getState();
-                    if (currentState != previousState) {
-                        if (crops.getState() == CropState.GERMINATED) {
-                            crops.setState(CropState.SEEDED);
-                        }
-                        if (crops.getState() == CropState.MEDIUM) {
-                            crops.setState(CropState.SMALL);
-                        }
-                        if (crops.getState() == CropState.RIPE) {
-                            crops.setState(CropState.TALL);
+                        if (ageable.getAge() == 5) {
+                            ageable.setAge(4);
                         }
                         state.update();
                         previousState = currentState;
@@ -183,11 +150,10 @@ public class Grow implements Listener
         }
     }
 
-    private void setCustomTickSpeed(Block block, int tickSpeed, int age) {
+    private void setCustomTickSpeed(Block block, int age) {
         Ageable ageable = (Ageable) block.getBlockData();
         ageable.setAge(age);
         block.setBlockData(ageable);
-        block.setMetadata("customTickSpeed", new FixedMetadataValue(RegicideAgriculture.instance(), tickSpeed));
     }
 
 }
