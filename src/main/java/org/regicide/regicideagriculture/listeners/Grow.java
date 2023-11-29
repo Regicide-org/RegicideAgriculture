@@ -46,22 +46,22 @@ public class Grow implements Listener
         if (Arrays.asList(aboveAverage).contains(block.getBiome())) {
             if ((block.getType() == Material.WHEAT) || (block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)
                     || (block.getType() == Material.MELON_STEM) || (block.getType() == Material.PUMPKIN_STEM)) {
-                setCustomTickSpeed(block,  1);
+                setCustomAge(block,  1);
             }
         }
         else if (Arrays.asList(coolBiomes).contains(block.getBiome())) {
             if ((block.getType() == Material.WHEAT) || (block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)
                     || (block.getType() == Material.MELON_STEM) || (block.getType() == Material.PUMPKIN_STEM)) {
-                setCustomTickSpeed(block,  2);
+                setCustomAge(block,  2);
             }
         }
         else if (Arrays.asList(veryCoolBiomes).contains(block.getBiome())) {
             if ((block.getType() == Material.WHEAT) || (block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)
                     || (block.getType() == Material.MELON_STEM) || (block.getType() == Material.PUMPKIN_STEM)) {
-                setCustomTickSpeed(block, 3);
+                setCustomAge(block, 3);
             }
             else if (block.getType() == Material.BEETROOTS) {
-                setCustomTickSpeed(block, 1);
+                setCustomAge(block, 1);
             }
 
         }
@@ -71,31 +71,27 @@ public class Grow implements Listener
             if (block.getType() == Material.WHEAT)
             {
                 BlockState state = block.getState();
-                if (state.getBlockData() instanceof Ageable) {
-                    Ageable ageable = (Ageable) state.getBlockData();
-                    int currentState = ageable.getAge();
-                    if (currentState != previousState) {
-                        if (ageable.getAge() == 2) {
-                            ageable.setAge(1);
-                        }
-                        state.update();
-                        previousState = currentState;
+                Ageable ageable = (Ageable) state.getBlockData();
+                int currentState = ageable.getAge();
+                if (currentState != previousState) {
+                    if (ageable.getAge() == 2) {
+                        setCustomAge(block, 1);
                     }
+                    state.update();
+                    previousState = currentState;
                 }
             }
              else if ((block.getType() == Material.CARROTS) || (block.getType() == Material.POTATOES)
                 || (block.getType() == Material.BEETROOTS) || (block.getType() == Material.PUMPKIN_STEM) || (block.getType() == Material.MELON_STEM)){
                 BlockState state = block.getState();
-                if (state.getBlockData() instanceof Ageable) {
-                    Ageable ageable = (Ageable) state.getBlockData();
-                    int currentState = ageable.getAge();
-                    if (currentState != previousState) {
-                        if (ageable.getAge() == 3) {
-                            ageable.setAge(1);
-                        }
-                        state.update();
-                        previousState = currentState;
+                Ageable ageable = (Ageable) state.getBlockData();
+                int currentState = ageable.getAge();
+                if (currentState != previousState) {
+                    if (ageable.getAge() == 3) {
+                        setCustomAge(block, 2);
                     }
+                    state.update();
+                    previousState = currentState;
                 }
             }
         }
@@ -106,20 +102,18 @@ public class Grow implements Listener
                     || (block.getType() == Material.BEETROOTS) || (block.getType() == Material.PUMPKIN_STEM) || (block.getType() == Material.MELON_STEM))
             {
                 BlockState state = block.getState();
-                if (state.getBlockData() instanceof Ageable) {
-                    Ageable ageable = (Ageable) state.getBlockData();
-                    int currentState = ageable.getAge();
-                    if (currentState != previousState) {
-                        if (ageable.getAge() == 2) {
-                            ageable.setAge(1);
-                        }
-                        if (ageable.getAge() == 4) {
-                            ageable.setAge(3);
-                        }
-                        state.update();
-                        previousState = currentState;
+                Ageable ageable = (Ageable) state.getBlockData();
+                int currentState = ageable.getAge();
+                if (currentState != previousState) {
+                    if (ageable.getAge() == 2) {
+                        setCustomAge(block, 1);
                     }
-                }
+                    if (ageable.getAge() == 4) {
+                        setCustomAge(block, 3);
+                    }
+                    state.update();
+                    previousState = currentState;
+                    }
             }
         }
 
@@ -129,28 +123,26 @@ public class Grow implements Listener
                     || (block.getType() == Material.BEETROOTS) || (block.getType() == Material.PUMPKIN_STEM) || (block.getType() == Material.MELON_STEM))
             {
                 BlockState state = block.getState();
-                if (state.getBlockData() instanceof Ageable) {
-                    Ageable ageable = (Ageable) state.getBlockData();
-                    int currentState = ageable.getAge();
-                    if (currentState != previousState) {
-                        if (ageable.getAge() == 1) {
-                            ageable.setAge(0);
-                        }
-                        if (ageable.getAge() == 3) {
-                            ageable.setAge(2);
-                        }
-                        if (ageable.getAge() == 5) {
-                            ageable.setAge(4);
-                        }
+                Ageable ageable = (Ageable) state.getBlockData();
+                int currentState = ageable.getAge();
+                if (currentState != previousState) {
+                    if (ageable.getAge() == 1) {
+                        setCustomAge(block, 0);
+                    }
+                    if (ageable.getAge() == 3) {
+                        setCustomAge(block, 2);
+                    }
+                    if (ageable.getAge() == 5) {
+                        setCustomAge(block, 4);
+                    }
                         state.update();
                         previousState = currentState;
                     }
-                }
             }
         }
     }
 
-    private void setCustomTickSpeed(Block block, int age) {
+    private void setCustomAge(Block block, int age) {
         Ageable ageable = (Ageable) block.getBlockData();
         ageable.setAge(age);
         block.setBlockData(ageable);
