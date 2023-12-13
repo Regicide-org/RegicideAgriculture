@@ -1,6 +1,5 @@
 package org.regicide.regicideagriculture.listeners;
 
-import org.bukkit.CropState;
 import org.bukkit.Material;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
@@ -9,11 +8,12 @@ import org.bukkit.block.data.Ageable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.regicide.regicideagriculture.RegicideAgriculture;
 
 import java.util.Arrays;
 
 
-public class Grow implements Listener
+public class GrowthListener implements Listener
 {
 
     Biome[] veryBadBiomes = {Biome.COLD_OCEAN, Biome.DEEP_COLD_OCEAN, Biome.DESERT, Biome.DEEP_DARK, Biome.DEEP_FROZEN_OCEAN,
@@ -27,15 +27,13 @@ public class Grow implements Listener
             Biome.WINDSWEPT_HILLS, Biome.WOODED_BADLANDS};
 
     Biome[] belowTheAverage = {Biome.LUSH_CAVES, Biome.MANGROVE_SWAMP, Biome.OLD_GROWTH_SPRUCE_TAIGA, Biome.SWAMP,
-            Biome.TAIGA, Biome.WINDSWEPT_SAVANNA, Biome.WINDSWEPT_GRAVELLY_HILLS};
+                Biome.TAIGA, Biome.WINDSWEPT_SAVANNA, Biome.WINDSWEPT_GRAVELLY_HILLS};
     Biome[] aboveAverage = {Biome.DEEP_LUKEWARM_OCEAN, Biome.LUKEWARM_OCEAN, Biome.OCEAN};
     Biome[] coolBiomes = {Biome.BAMBOO_JUNGLE, Biome.JUNGLE, Biome.FOREST, Biome.OLD_GROWTH_BIRCH_FOREST, Biome.SPARSE_JUNGLE,
             Biome.WARM_OCEAN};
 
     Biome[] veryCoolBiomes = {Biome.RIVER, Biome.BIRCH_FOREST, Biome.CHERRY_GROVE, Biome.FLOWER_FOREST, Biome.MEADOW,
             Biome.PLAINS, Biome.SUNFLOWER_PLAINS};
-
-
 
 
     int previousState = -1;
