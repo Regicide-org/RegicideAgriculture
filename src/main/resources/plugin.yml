@@ -1,5 +1,8 @@
-name: Test
+name: RegicideAgriculture
 version: '${project.version}'
 main: org.regicide.regicideagriculture.RegicideAgriculture
 api-version: '1.20'
 description: ''
+commands:
+  reload:
+    permission: "regicideagriculture.command.regicideagriculture"

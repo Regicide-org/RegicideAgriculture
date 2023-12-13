@@ -1,28 +1,33 @@
-Biomes:
-  VeryBad:
+biome-types:
+  very-bad-fertile:
     biomes: [COLD_OCEAN, DEEP_COLD_OCEAN, DESERT, DEEP_DARK, DEEP_FROZEN_OCEAN,
              FROZEN_PEAKS, FROZEN_OCEAN, FROZEN_RIVER, DRIPSTONE_CAVES, ICE_SPIKES,
              JAGGED_PEAKS, BASALT_DELTAS, CRIMSON_FOREST, END_BARRENS, END_HIGHLANDS,
              END_MIDLANDS, ERODED_BADLANDS, NETHER_WASTES, SMALL_END_ISLANDS, SOUL_SAND_VALLEY,
              THE_END, THE_VOID, WARPED_FOREST]
-    speed: 0.25
-  Bad:
+    speed: 0.125
+
+  bad-fertile:
     biomes: [GROVE, BADLANDS, SAVANNA, BEACH, MUSHROOM_FIELDS, SNOWY_BEACH,
              SNOWY_PLAINS, SNOWY_SLOPES, SNOWY_TAIGA, STONY_PEAKS, STONY_SHORE,
              WINDSWEPT_HILLS, WOODED_BADLANDS]
-    speed: 0.5
-  BelowTheAverage:
+    speed: 0.25
+
+  below-average-fertile:
     biomes: [LUSH_CAVES, MANGROVE_SWAMP, OLD_GROWTH_SPRUCE_TAIGA, SWAMP,
              TAIGA, WINDSWEPT_SAVANNA, WINDSWEPT_GRAVELLY_HILLS]
-    speed: 0.75
-  AboveTheAverage:
+    speed: 0.35
+
+  above-average-fertile:
     biomes: [DEEP_LUKEWARM_OCEAN, LUKEWARM_OCEAN, OCEAN]
-    speed: 1.25
-  Cool:
+    speed: 0.5
+
+  fertile:
     biomes: [BAMBOO_JUNGLE, JUNGLE, FOREST, OLD_GROWTH_BIRCH_FOREST, SPARSE_JUNGLE,
              WARM_OCEAN]
-    speed: 1.5
-  VeryCool:
+    speed: 0.75
+
+  very-fertile:
     biomes: [RIVER, BIRCH_FOREST, CHERRY_GROVE, FLOWER_FOREST, MEADOW,
              PLAINS, SUNFLOWER_PLAINS]
-    speed: 2
+    speed: 1.0

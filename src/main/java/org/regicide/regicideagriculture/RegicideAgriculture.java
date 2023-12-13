@@ -2,7 +2,7 @@ package org.regicide.regicideagriculture;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.regicide.regicideagriculture.listeners.GrowthListener;
+import org.regicide.regicideagriculture.listeners.GrowthListenerDeprecated;
 import java.util.logging.Logger;
 
 public final class RegicideAgriculture extends JavaPlugin {
@@ -13,16 +13,21 @@ public final class RegicideAgriculture extends JavaPlugin {
     public void onEnable()
     {
         plugin = this;
+        Logger l = getLogger();
 
         saveDefaultConfig();
-        GrowthManager.readBiomes();
+        GrowthManager.readBiomeTypes();
+        l.info("All biomes was successfully loaded.");
 
-        Bukkit.getPluginManager().registerEvents(new GrowthListener(), this);
-        Logger logger = getLogger();
-        logger.info("The plugin get started");
-        logger.info("CustomTickSpeedPlugin has been enabled!");
+        Bukkit.getPluginManager().registerEvents(new GrowthListenerDeprecated(), this);
+        l.info("The plugin get started");
+        l.info("CustomTickSpeedPlugin has been enabled!");
     }
 
+    // TODO: Перезапуск всех команд, всех листенеров, всех конфигураций и добавление команды /RegicideAgriculture reload
+    public void reload() {
+
+    }
 
     public void onDisable() {
         // Plugin shutdown logic
