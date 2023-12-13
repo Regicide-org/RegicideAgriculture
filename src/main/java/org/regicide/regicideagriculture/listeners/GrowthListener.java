@@ -8,7 +8,6 @@ import org.bukkit.block.data.Ageable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.regicide.regicideagriculture.RegicideAgriculture;
 
 import java.util.Arrays;
 
@@ -34,6 +33,7 @@ public class GrowthListener implements Listener
 
     Biome[] veryCoolBiomes = {Biome.RIVER, Biome.BIRCH_FOREST, Biome.CHERRY_GROVE, Biome.FLOWER_FOREST, Biome.MEADOW,
             Biome.PLAINS, Biome.SUNFLOWER_PLAINS};
+
 
 
     int previousState = -1;

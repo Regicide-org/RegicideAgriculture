@@ -15,6 +15,7 @@ public final class RegicideAgriculture extends JavaPlugin {
         plugin = this;
 
         saveDefaultConfig();
+        GrowthManager.readBiomes();
 
         Bukkit.getPluginManager().registerEvents(new GrowthListener(), this);
         Logger logger = getLogger();
