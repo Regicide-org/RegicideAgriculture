@@ -3,6 +3,7 @@ package org.regicide.regicideagriculture;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.regicide.regicideagriculture.commands.RegicideAgricultureCMD;
+import org.regicide.regicideagriculture.listeners.GrowthListener;
 import org.regicide.regicideagriculture.listeners.GrowthListenerDeprecated;
 import java.util.logging.Logger;
 
@@ -30,6 +31,7 @@ public final class RegicideAgriculture extends JavaPlugin {
     // TODO: Перезапуск всех команд, всех листенеров, всех конфигураций и добавление команды /RegicideAgriculture reload
     public void reload() {
         getCommand("reload").setExecutor(new RegicideAgricultureCMD());
+
     }
 
     public void onDisable() {
