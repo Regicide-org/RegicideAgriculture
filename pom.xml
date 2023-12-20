@@ -39,7 +39,7 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <outputFile>I:\Server\ConcordiaCraft\ConcordiaCraft - 1.20.2\plugins\${project.name}-${project.version}.jar</outputFile>
+                            <outputFile>C:\Users\User\OneDrive\Документы\ServerMinecraft\plugins\${project.name}-${project.version}.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>
@@ -69,6 +69,12 @@
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
             <version>1.20.2-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>dev.jorel</groupId>
+            <artifactId>commandapi-bukkit-core</artifactId>
+            <version>9.3.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

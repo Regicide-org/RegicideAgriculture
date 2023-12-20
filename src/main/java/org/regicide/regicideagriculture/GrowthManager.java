@@ -24,10 +24,12 @@ public final class GrowthManager {
 
             for (String b : bList) {
                 biomes.add(Biome.valueOf(b));
+                BIOME_BY_TYPE_MAP.put(Biome.valueOf(b), biomeType);
             }
-
             TYPES_OF_BIOME_MAP.put(biomeType, biomes);
         }
+
+
     }
 
     /**
@@ -42,9 +44,9 @@ public final class GrowthManager {
      * @param biome The biome.
      * @return Fertility type of the biome
      */
-    /*public static String getType(@NotNull final Biome biome) {
-
-    }*/
+    public static String getType(@NotNull final Biome biome) {
+        return BIOME_BY_TYPE_MAP.get(biome);
+    }
 
 
 }
