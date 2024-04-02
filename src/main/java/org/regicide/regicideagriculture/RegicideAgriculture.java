@@ -21,14 +21,17 @@ public final class RegicideAgriculture extends JavaPlugin {
         GrowthManager.readBiomeTypes();
         l.info("All biomes was successfully loaded.");
 
+        GrowthManager.readMaterialTypes();
+        l.info("All crops successfully loaded.");
+
         Bukkit.getPluginManager().registerEvents(new GrowthListenerDeprecated(), this);
-        l.info("The plugin get started");
-        l.info("CustomTickSpeedPlugin has been enabled!");
+        l.info("The plugin get started!");
+        l.info("RegicideAgricultureCMD has been enabled!");
 
         getCommand("types").setExecutor(new RegicideAgricultureCMD());
     }
 
-    // TODO: Перезапуск всех команд, всех листенеров, всех конфигураций и добавление команды /RegicideAgriculture reload
+    //Перезапуск всех команд, всех листенеров, всех конфигураций и добавление команды /RegicideAgriculture reload
     public void reload() {
         getCommand("reload").setExecutor(new RegicideAgricultureCMD());
 

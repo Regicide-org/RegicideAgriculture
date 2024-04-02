@@ -31,3 +31,49 @@ biome-types:
     biomes: [RIVER, BIRCH_FOREST, CHERRY_GROVE, FLOWER_FOREST, MEADOW,
              PLAINS, SUNFLOWER_PLAINS]
     speed: 1.0
+
+plant-types:
+  plants:
+    BEETROOTS:
+      Growth: 50
+      GrowthDark: 25
+
+    WHEAT:
+      Growth: 50
+      GrowthDark: 25
+
+    CARROTS:
+      Growth: 50
+      GrowthDark: 25
+
+    POTATO:
+      Growth: 50
+      GrowthDark: 25
+
+    PUMPKIN:
+      Growth: 50
+      GrowthDark: 25
+
+    MELON:
+      Growth: 50
+      GrowthDark: 25
+
+    MELON_STEM:
+      Growth: 50
+      GrowthDark: 25
+
+    PUMPKIN_SEEDS:
+      Growth: 50
+      GrowthDark: 25
+
+    MELON_SEEDS:
+      Growth: 50
+      GrowthDark: 25
+
+    BAMBOO:
+      Growth: 50
+      GrowthDark: 25
+
+    SUGAR_CANE:
+      Growth: 50
+      GrowthDark: 25
