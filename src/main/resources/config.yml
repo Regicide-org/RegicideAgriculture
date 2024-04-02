@@ -14,7 +14,7 @@ biome-types:
     speed: 0.25
 
   below-average-fertile:
-    biomes: [LUSH_CAVES, MANGROVE_SWAMP, OLD_GROWTH_SPRUCE_TAIGA, SWAMP,
+    biomes: [LUSH_CAVES, MANGROVE_SWAMP, OLD_growth_SPRUCE_TAIGA, SWAMP,
              TAIGA, WINDSWEPT_SAVANNA, WINDSWEPT_GRAVELLY_HILLS]
     speed: 0.35
 
@@ -23,7 +23,7 @@ biome-types:
     speed: 0.5
 
   fertile:
-    biomes: [BAMBOO_JUNGLE, JUNGLE, FOREST, OLD_GROWTH_BIRCH_FOREST, SPARSE_JUNGLE,
+    biomes: [BAMBOO_JUNGLE, JUNGLE, FOREST, OLD_growth_BIRCH_FOREST, SPARSE_JUNGLE,
              WARM_OCEAN]
     speed: 0.75
 
@@ -35,45 +35,45 @@ biome-types:
 plant-types:
   plants:
     BEETROOTS:
-      Growth: 50
-      GrowthDark: 25
+      growth: 55
+      growthDark: 25
 
     WHEAT:
-      Growth: 50
-      GrowthDark: 25
+      growth: 50
+      growthDark: 20
 
     CARROTS:
-      Growth: 50
-      GrowthDark: 25
+      growth: 50
+      growthDark: 25
 
     POTATO:
-      Growth: 50
-      GrowthDark: 25
+      growth: 40
+      growthDark: 20
 
     PUMPKIN:
-      Growth: 50
-      GrowthDark: 25
+      growth: 50
+      growthDark: 25
 
     MELON:
-      Growth: 50
-      GrowthDark: 25
+      growth: 50
+      growthDark: 25
 
     MELON_STEM:
-      Growth: 50
-      GrowthDark: 25
+      growth: 50
+      growthDark: 25
 
     PUMPKIN_SEEDS:
-      Growth: 50
-      GrowthDark: 25
+      growth: 50
+      growthDark: 25
 
     MELON_SEEDS:
-      Growth: 50
-      GrowthDark: 25
+      growth: 50
+      growthDark: 25
 
     BAMBOO:
-      Growth: 50
-      GrowthDark: 25
+      growth: 30
+      growthDark: 15
 
     SUGAR_CANE:
-      Growth: 50
-      GrowthDark: 25
+      growth: 35
+      growthDark: 15
