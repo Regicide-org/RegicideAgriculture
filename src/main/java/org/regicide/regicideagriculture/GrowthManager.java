@@ -14,6 +14,8 @@ public final class GrowthManager {
     static private final HashSet<Material> PLANTS = new HashSet<>();
     static private final HashMap<Material, Integer> TIME_GROWTH = new HashMap<>();
 
+    static private final HashMap<Material, Integer> DEATH_CHANCE = new HashMap<>();
+
     static void readBiomeTypes() {
         ConfigurationSection biomeSection = RegicideAgriculture.instance().getConfig().getConfigurationSection("biome-types");
         Set<String> biomeTypes = biomeSection.getKeys(false);
@@ -39,10 +41,12 @@ public final class GrowthManager {
         for (String plantType : plantTypes){
             List<String> pList = plantsSection.getStringList(plantType + ".plants");
             List<String> gList = plantsSection.getStringList(plantType + ".growth");
+            List<String> dList = plantsSection.getStringList(plantType + ".death");
             Integer ind = 0;
             for (String p : pList) {
                 PLANTS.add(Material.valueOf(plantType));
                 TIME_GROWTH.put(Material.valueOf(plantType), Integer.parseInt(gList.get(ind)));
+                DEATH_CHANCE.put(Material.valueOf(plantType), Integer.parseInt(dList.get(ind)));
             }
         }
     }
@@ -72,10 +76,15 @@ public final class GrowthManager {
     }
 
     /**
-     * @param plant The biome.
+     * @param plant The Material.
      * @return Time growth of the plant
      */
     public static Integer getTimeGrowth(@NotNull final Material plant){
         return TIME_GROWTH.get(plant);
     }
+
+    public static Integer getDeathChance(@NotNull final Material plant){
+        return DEATH_CHANCE.get(plant);
+    }
 }
+
