@@ -37,43 +37,95 @@ plant-types:
     BEETROOTS:
       growth: 55
       growthDark: 25
+      death: 3
 
     WHEAT:
       growth: 50
       growthDark: 20
+      death: 4
 
     CARROTS:
       growth: 50
       growthDark: 25
+      death: 2
 
     POTATO:
       growth: 40
       growthDark: 20
+      death: 2
 
     PUMPKIN:
       growth: 50
       growthDark: 25
+      death: 3
 
     MELON:
       growth: 50
       growthDark: 25
+      death: 3
 
     MELON_STEM:
       growth: 50
       growthDark: 25
+      death: 2
 
     PUMPKIN_SEEDS:
       growth: 50
       growthDark: 25
+      death: 2
 
     MELON_SEEDS:
       growth: 50
       growthDark: 25
+      death: 2
 
     BAMBOO:
       growth: 30
       growthDark: 15
+      death: 2
 
     SUGAR_CANE:
       growth: 35
       growthDark: 15
+      death: 2
+
+    SPRUCE_SAPLING:
+      growth: 30
+      growthDark: 20
+      death: 3
+
+    ACACIA_SAPLING:
+      growth: 40
+      growthDark: 20
+      death: 4
+
+    BAMBOO_SAPLING:
+      growth: 25
+      growthDark: 12
+      death: 2
+
+    BIRCH_SAPLING:
+      growth: 40
+      growthDark: 20
+      death: 3
+
+    OAK_SAPLING:
+      growth: 40
+      growthDark: 20
+      death: 3
+
+    CHERRY_SAPLING:
+      growth: 40
+      growthDark: 20
+      death: 5
+
+    DARK_OAK_SAPLING:
+      growth: 40
+      growthDark: 35
+      death: 2
+
+    JUNGLE_SAPLING:
+      growth: 40
+      growthDark: 10
+      death: 2
+
