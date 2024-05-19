@@ -25,6 +25,7 @@ public final class RegicideAgriculture extends JavaPlugin {
         l.info("All crops successfully loaded.");
 
         Bukkit.getPluginManager().registerEvents(new GrowthListenerDeprecated(), this);
+        Bukkit.getPluginManager().registerEvents(new GrowthListener(), this);
         l.info("The plugin get started!");
         l.info("RegicideAgricultureCMD has been enabled!");
 

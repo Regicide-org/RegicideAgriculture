@@ -3,15 +3,14 @@ package org.regicide.regicideagriculture.listeners;
 import org.bukkit.Material;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.Ageable;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockGrowEvent;
-import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.regicide.regicideagriculture.GrowthManager;
-import org.regicide.regicideagriculture.RegicideAgriculture;
 import java.util.Random;
 
-import static org.bukkit.Bukkit.getServer;
+import static java.lang.Integer.parseInt;
 
 
 /**
@@ -20,21 +19,26 @@ import static org.bukkit.Bukkit.getServer;
 public final class GrowthListener implements Listener {
     Random random = new Random();
 
-    public void onPlantGrow(@NotNull final BlockGrowEvent e) {
-        // TODO добавить разное поведеление для разных типов растений для типов бимоов
+    public void onPlantGrow(@NotNull final BlockGrowEvent event) {
         //e.getNewState().getType();
 
-        Biome plantBiome = e.getNewState().getBlock().getBiome();
+        Biome plantBiome = event.getNewState().getBlock().getBiome();
         String biomeType = GrowthManager.getType(plantBiome);
-        Block block = e.getBlock();
+        Block block = event.getBlock();
+        Ageable ageable = (Ageable) block.getBlockData();
 
-        Material plant = e.getBlock().getType();
+        Material plant = event.getBlock().getType();
         if (GrowthManager.isPlant(plant)){
+            Double growthDurationMultiplier = 2 - GrowthManager.getBiomeSpeed(plantBiome);
+            //int currentGrowthStage = ageable.getAge();
+            int newGrowthDuration = parseInt(String.valueOf(Math.round(ageable.getMaximumAge() * growthDurationMultiplier)));
+            ageable.setAge(newGrowthDuration);
+            block.setBlockData(ageable);
+
             int randomNumber = random.nextInt(100);
-            int growthTime = GrowthManager.getTimeGrowth(plant);
+            //int growthTime = GrowthManager.getTimeGrowth(plant);
             int deathChance = GrowthManager.getDeathChance(plant);
 
-            getServer().getScheduler().runTaskLater(RegicideAgriculture.instance(), () -> {}, growthTime);
             if (deathChance <= randomNumber)
                 block.setType(Material.AIR);
         }
